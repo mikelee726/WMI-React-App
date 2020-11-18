@@ -20,7 +20,7 @@ function App() {
 
   return (
     <div className="App">
-      <header>WMI Data - Honda</header>
+      <header>WMI Data - Honda | Total: {data.length}</header>
       <table>
         <thead>
           <tr>
