@@ -1,4 +1,4 @@
-## Script to run the project
+## Scripts
 
 In the project directory, you can run:
 
@@ -9,6 +9,9 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
+
+### `npm test`
+Runs a set of basic tests for the app.
 
 ## Tasks
 
