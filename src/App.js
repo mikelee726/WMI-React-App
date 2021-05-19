@@ -71,10 +71,10 @@ function App() {
   return (
     <div className="App">
       <header>WMI Data - Honda | Total: {cars.length}</header>
-
+      {loadingText}
       <input
         type="text"
-        onMouseOut={(event) => setSearchText(event.target.value)}
+        onChange={(event) => setSearchText(event.target.value)}
       ></input>
       <select onChange={(e) => setCountry(e.target.value)}>
         <option value="View All">View All</option>
