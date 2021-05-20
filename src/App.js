@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import "./App.css";
 import data from "./honda_wmi.json";
 import axios from "axios";
+import { getCars, getCountries } from "./api";
+import "./table.css";
 
 function App() {
   const keys = ["name", "wmi", "country", "createdOn", "vehicleType"];
@@ -12,31 +14,8 @@ function App() {
   const [country, setCountry] = useState("View All");
   const [loadingText, setLoadingText] = useState("");
 
-  const getCars = async () => {
-    const response = await axios({
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-      url: "http://localhost:55216/cars",
-      params: { searchText: searchText, country: country },
-    });
-    return response.data;
-  };
-
-  const getCountries = async () => {
-    const response = await axios({
-      method: "GET",
-      headers: {
-        "content-type": "application/json",
-      },
-      url: "http://localhost:55216/cars/countries",
-    });
-    return response.data;
-  };
-
   useEffect(() => {
-    getCars().then((autos) => {
+    getCars(searchText, country).then((autos) => {
       setCars(autos);
     });
   }, []);
@@ -48,10 +27,9 @@ function App() {
   }, []);
 
   const getData = () => {
-    getCars().then((autos) => {
+    getCars(searchText, country).then((autos) => {
       setCars(autos);
     });
-    console.log(searchText + " " + country);
   };
 
   const getRowsJsx = () => {
@@ -88,7 +66,7 @@ function App() {
       <button type="button" onClick={getData()}>
         Search
       </button>
-      <table>
+      <table id="cars">
         <thead>
           <tr>
             {keys.map((k) => (
